@@ -1,14 +1,14 @@
 function updateTime() {
 
 //Amsterdam
-let amsterdamElement = document.querySelector("#amsterdam");
-if (amsterdamElement) {
-let amsterdamDateElement = amsterdamElement.querySelector(".date");
-let amsterdamTimeElement = amsterdamElement.querySelector(".time");
-let amsterdamTime = moment().tz("Europe/Amsterdam");
+let berlinElement = document.querySelector("#berlin");
+if (berlinElement) {
+let berlinDateElement = berlinElement.querySelector(".date");
+let berlinTimeElement = berlinElement.querySelector(".time");
+let berlinTime = moment().tz("Europe/Berlin");
 
-amsterdamDateElement.innerHTML = amsterdamTime.format("dddd MMMM D, YYYY");
-amsterdamTimeElement.innerHTML = amsterdamTime.format("HH:mm:ss");
+berlinDateElement.innerHTML = berlinTime.format("dddd MMMM D, YYYY");
+berlinTimeElement.innerHTML = berlinTime.format("HH:mm:ss");
 }
 //Auckland
 let aucklandElement = document.querySelector("#auckland");
@@ -35,7 +35,9 @@ newYorkTimeElement.innerHTML = newYorkTime.format("HH:mm:ss");
 
 function updateCity(event) {
     let cityTimeZone = event.target.value;
-    console.log(cityTimeZone);
+    if (cityTimeZone === "current") {
+        cityTimeZone = moment.tz.guess();
+    }
     }
 
 updateTime();
